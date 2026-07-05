@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Cafe Bengaluru</title>
+    <style>
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      :root{--g:#C8A45C;--g15:rgba(200,164,92,0.15);--g25:rgba(200,164,92,0.25);--bg:#0D0D0D;--c:#1A1A1A;--b:#2E2E2E;--t:#ECECEC;--t2:#A0A0A0;--t3:#666;--gn:#4CAF50;--rd:#E05555}
+      body{font-family:Inter,-apple-system,sans-serif;background:var(--bg);color:var(--t);line-height:1.5;min-height:100vh;-webkit-font-smoothing:antialiased}
+      *{-webkit-tap-highlight-color:transparent}button{cursor:pointer;font-family:inherit;font-size:inherit;touch-action:manipulation}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+      .db{background:linear-gradient(90deg,var(--g15),var(--g25),var(--g15));text-align:center;padding:6px 12px;font-size:0.62rem;color:var(--g);letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border-bottom:1px solid var(--g25)}
+      nav{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(13,13,13,0.95);border-bottom:1px solid var(--b);position:sticky;top:0;z-index:100;backdrop-filter:blur(14px)}
+      .nb{font-size:1.1rem;font-weight:800;display:flex;align-items:center;gap:8px}.nd{width:8px;height:8px;border-radius:50%;background:var(--g)}
+      .nl{display:flex;gap:20px}.nl a{font-size:0.75rem;font-weight:500;color:var(--t2);transition:color 0.2s}.nl a:hover{color:#fff}
+      .cb{position:relative;display:flex;align-items:center;gap:6px;padding:7px 14px;background:var(--c);border:1px solid var(--b);border-radius:100px;color:var(--t);font-size:0.75rem;font-weight:500;transition:all 0.2s;z-index:1}
+      .cbb{position:absolute;top:-5px;right:-5px;background:var(--g);color:#000;font-size:0.55rem;min-width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
+      .hero{position:relative;min-height:85vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px 16px;overflow:hidden}
+      .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.55;border:none}.hero-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,13,13,0.3)0%,rgba(13,13,13,0.7)40%,var(--bg)100%);z-index:1}
+      .hc{position:relative;z-index:2;pointer-events:none;max-width:680px;padding:0 8px}
+      .hpill{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;background:var(--g15);border:1px solid var(--g25);border-radius:100px;font-size:0.68rem;color:var(--g);letter-spacing:0.06em;text-transform:uppercase;font-weight:600;margin-bottom:16px}
+      .hpill span{width:5px;height:5px;border-radius:50%;background:var(--g);animation:pulse 2s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+      .hc h1{font-size:clamp(2rem,6vw,4.5rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:10px}.hc h1 em{font-style:normal;color:var(--g)}
+      .hc p{font-size:0.92rem;color:var(--t2);max-width:460px;margin:0 auto 24px;line-height:1.65}
+      .hbtn{display:inline-flex;align-items:center;gap:6px;padding:12px 24px;background:var(--g);color:#000;border-radius:100px;font-weight:700;font-size:0.85rem;border:none;transition:all 0.2s;pointer-events:auto}.hbtn:active{background:#D4B46C}
+      .sr{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:760px;margin:-36px auto 0;padding:0 16px;position:relative;z-index:3}
+      .sb{background:var(--c);border:1px solid var(--b);border-radius:10px;padding:14px 10px;text-align:center}.sn{font-size:1.3rem;font-weight:700;color:var(--g)}.sl{font-size:0.58rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.05em;margin-top:2px}
+      section{max-width:1000px;margin:48px auto;padding:0 20px}.sh{text-align:center;margin-bottom:32px}.sh h2{font-size:1.3rem;font-weight:700}.sh p{font-size:0.8rem;color:var(--t2);max-width:440px;margin:4px auto 0}
+      .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+      .mcard{background:var(--c);border:1px solid var(--b);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:all 0.2s}
+      .mcard img{width:100%;height:160px;object-fit:cover}.mcard .minfo{padding:14px;flex:1;display:flex;flex-direction:column;gap:6px}
+      .mcard h4{font-size:0.85rem;font-weight:600}.mcard .md{font-size:0.7rem;color:var(--t2);line-height:1.4}.mcard .mfoot{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+      .mcard .mp{font-size:0.95rem;font-weight:700;color:var(--g)}.mt{font-size:0.55rem;padding:2px 7px;border-radius:4px;font-weight:600;text-transform:uppercase}
+      .tveg{color:var(--gn);border:1px solid rgba(76,175,80,0.3)}.tnon{color:var(--rd);border:1px solid rgba(224,85,85,0.3)}
+      .badd{padding:7px 12px;background:var(--g);color:#000;border:none;border-radius:100px;font-size:0.68rem;font-weight:700;transition:all 0.15s}.badd:active{background:#D4B46C}
+      .ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}.ggrid img{width:100%;height:200px;object-fit:cover;border-radius:12px}
+      .cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+      .ccard{background:var(--c);border:1px solid var(--b);border-radius:14px;padding:18px}.ccard h5{font-size:0.6rem;color:var(--t2);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;font-weight:600}.ccard .cv{font-size:0.82rem;font-weight:500}.ccard .cv a{color:var(--g);word-break:break-all}
+      .ovr{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:400;display:none}.ovr.open{display:flex}
+      .cdrawer{background:var(--bg);border-left:1px solid var(--b);width:100%;max-width:400px;height:100%;display:flex;flex-direction:column;margin-left:auto;animation:si 0.2s ease-out}@keyframes si{from{transform:translateX(30px);opacity:0}to{transform:translateX(0);opacity:1}}
+      .chd{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--b)}.chd h3{font-size:0.95rem;font-weight:600}
+      .chd button{background:none;border:1px solid var(--b);color:var(--t);width:28px;height:28px;border-radius:50%;font-size:0.85rem;display:flex;align-items:center;justify-content:center}
+      .cbody{flex:1;overflow-y:auto;padding:14px 20px;display:flex;flex-direction:column;gap:8px}.cempty{text-align:center;padding:40px 0;color:var(--t2);font-size:0.8rem}
+      .citem{display:flex;align-items:center;gap:10px;padding:10px;background:var(--c);border:1px solid var(--b);border-radius:10px}.ciinfo{flex:1;min-width:0}.ciinfo .in{font-size:0.78rem;font-weight:600}.ciinfo .id{font-size:0.68rem;color:var(--t2)}
+      .cqty{display:flex;align-items:center;gap:5px}.cqty button{background:var(--b);border:none;color:var(--t);width:22px;height:22px;border-radius:50%;font-size:0.7rem;display:flex;align-items:center;justify-content:center}.cqty span{font-size:0.78rem;min-width:18px;text-align:center}
+      .cfoot{padding:14px 20px;border-top:1px solid var(--b)}.ctr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.ctr .tl{font-size:0.8rem;color:var(--t2)}.ctr .tv{font-size:1.1rem;font-weight:700;color:var(--g)}
+      .btn-co{width:100%;padding:11px;background:var(--g);color:#000;border:none;border-radius:100px;font-size:0.82rem;font-weight:700;margin-bottom:6px}.btn-co:active{background:#D4B46C}
+      .btn-cl{width:100%;padding:7px;background:transparent;border:1px solid var(--b);color:var(--t2);border-radius:100px;font-size:0.7rem}
+      .chkm{background:var(--bg);border:1px solid var(--b);border-radius:16px;padding:22px;width:100%;max-width:420px;max-height:85vh;overflow-y:auto;margin:auto}
+      .chkm h2{font-size:1rem;font-weight:700;margin-bottom:16px;text-align:center}
+      .csum{padding:12px;background:var(--c);border:1px solid var(--b);border-radius:10px;margin-bottom:16px}
+      .csum .ln{display:flex;justify-content:space-between;font-size:0.74rem;padding:3px 0;color:var(--t2)}.csum .ln.bt{border-top:1px solid var(--b);margin-top:6px;padding-top:6px;color:var(--t);font-weight:700;font-size:0.8rem}
+      .fg{margin-bottom:10px}.fg label{display:block;font-size:0.63rem;color:var(--t2);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.04em;font-weight:600}
+      .fg input,.fg textarea{width:100%;padding:9px 12px;background:var(--c);border:1px solid var(--b);border-radius:10px;color:var(--t);font-size:0.78rem;font-family:inherit;-webkit-appearance:none}.fg textarea{resize:vertical;min-height:44px}
+      .btn-po{width:100%;padding:11px;background:var(--gn);color:#fff;border:none;border-radius:100px;font-size:0.82rem;font-weight:700;margin-bottom:6px}.btn-po:active{background:#43A047}
+      .btn-mb{width:100%;padding:7px;background:transparent;border:1px solid var(--b);color:var(--t2);border-radius:100px;font-size:0.7rem}
+      .sbox{text-align:center;padding:16px}.sbox .si{font-size:2.5rem;margin-bottom:6px}.sbox h3{font-size:0.95rem}.sbox p{font-size:0.72rem;color:var(--t2);margin-top:4px}
+      .ap{background:var(--bg);border:1px solid var(--b);border-radius:16px;padding:20px;width:100%;max-width:600px;max-height:82vh;overflow-y:auto;margin:auto;position:relative}.ap h2{font-size:0.95rem;margin-bottom:12px;padding-right:24px}
+      .atb{display:flex;gap:5px;margin-bottom:14px;flex-wrap:wrap}
+      .atb button{padding:6px 12px;border-radius:100px;font-size:0.68rem;font-weight:600;border:1px solid var(--b);background:transparent;color:var(--t2);transition:all 0.15s}.atb button.act{background:var(--g);color:#000;border-color:var(--g)}
+      .apclose{position:absolute;top:10px;right:10px;background:none;border:1px solid var(--b);color:var(--t);width:26px;height:26px;border-radius:50%;font-size:0.8rem;display:flex;align-items:center;justify-content:center;z-index:10}
+      .orow{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--c);border:1px solid var(--b);border-radius:10px;font-size:0.7rem;margin-bottom:5px;flex-wrap:wrap}
+      .orow .oid{color:var(--g);font-weight:700;font-family:monospace;font-size:0.6rem;min-width:68px}.orow .oc{flex:1;min-width:100px}.orow .oa{font-weight:600;min-width:45px;text-align:right}
+      .ob{padding:3px 8px;border-radius:100px;font-size:0.55rem;font-weight:700;text-transform:uppercase}
+      .bnw{background:var(--g);color:#000}.bpr{background:rgba(255,167,38,0.2);color:#FFA726;border:1px solid rgba(255,167,38,0.3)}.bdn{background:rgba(76,175,80,0.2);color:var(--gn);border:1px solid rgba(76,175,80,0.3)}
+      .smg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}.sm{padding:12px;background:var(--c);border:1px solid var(--b);border-radius:10px;text-align:center}
+      .menulist{display:flex;flex-direction:column;gap:4px}.mlr{display:flex;justify-content:space-between;align-items:center;padding:6px 8px;border-bottom:1px solid var(--b);font-size:0.74rem}
+      footer{border-top:1px solid var(--b);padding:32px 16px 80px;text-align:center}footer p{font-size:0.68rem;color:var(--t3)}
+      .btn-al{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:7px 16px;border:1px solid var(--b);border-radius:100px;font-size:0.68rem;color:var(--t2);transition:all 0.15s;background:transparent;position:relative;z-index:10}.btn-al:active{border-color:var(--g);color:var(--g)}
+      .fab{position:fixed;bottom:16px;right:16px;background:var(--g);color:#000;padding:10px 18px;border-radius:100px;font-weight:700;font-size:0.78rem;border:none;box-shadow:0 8px 28px rgba(200,164,92,0.4);z-index:50;display:flex;align-items:center;gap:5px;transition:all 0.15s}.fab:active{transform:scale(0.95);background:#D4B46C}
+      @media(max-width:768px){nav{padding:12px 16px}.nl{display:none}.hero{min-height:100vh}.hc h1{font-size:1.8rem}.sr{grid-template-columns:repeat(3,1fr);margin-top:-28px}.mgrid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:8px}.mcard img{height:130px}.ggrid{grid-template-columns:repeat(2,1fr)}.ggrid img{height:150px}.cgrid{grid-template-columns:1fr}section{margin:36px auto;padding:0 14px}.cdrawer{max-width:100%}.ap{max-width:100%;border-radius:12px;padding:16px}}
+    </style>
+  </head>
+  <body>
+    <div class="db">This is a demo website — for preview purposes only</div>
+    <nav>
+      <div class="nb"><span class="nd"></span> Cafe Bengaluru</div>
+      <div class="nl">
+        <a href="#menu">Menu</a><a href="#gallery">Gallery</a
+        ><a href="#about">About</a><a href="#contact">Contact</a>
+      </div>
+      <button class="cb" onclick="TC()">
+        Cart<span class="cbb" id="cbd">0</span>
+      </button>
+    </nav>
+    <div class="hero">
+      <iframe
+        class="hero-vid"
+        src="https://player.cloudinary.com/embed/?cloud_name=daoogijwl&public_id=Coffee_advertisement_animation_202607051341_h8s9jm&autoplay=1&muted=1&loop=1&controls=0&background=1"
+        allow="autoplay;fullscreen"
+        allowfullscreen
+      ></iframe>
+      <div class="hero-grad"></div>
+      <div class="hc">
+        <div class="hpill"><span></span> 20,26,27, Bombay Shopping Centre, M Corp +OG, 19, RC Dutt Rd, Alkapuri, Vadodara, Gujarat 390007</div>
+        <h1><em>Cafe Bengaluru</em></h1>
+        <p>
+          Welcome to Cafe Bengaluru. Great food, great ambiance — come visit us today.
+        </p>
+        <a href="#menu" class="hbtn">Explore Menu</a>
+      </div>
+    </div>
+    <div class="sr">
+      <div class="sb">
+        <div class="sn">4.5 ★</div>
+        <div class="sl">Rating</div>
+      </div>
+      <div class="sb">
+        <div class="sn" id="opens-at">4:00 AM - 4:15PM</div>
+        <div class="sl">Hours</div>
+      </div>
+      <div class="sb">
+        <div class="sn" id="area-name">20,26,27, Bombay Shopping Centre, M Corp +OG, 19, RC Dutt Rd, Alkapuri, Vadodara, Gujarat 390007</div>
+        <div class="sl">Location</div>
+      </div>
+    </div>
+    <section id="menu">
+      <div class="sh">
+        <h2>Our Menu</h2>
+        <p>Everything fresh, made with quality ingredients.</p>
+      </div>
+      <div class="mgrid" id="mg"></div>
+    </section>
+    <section id="gallery">
+      <div class="sh"><h2>Gallery</h2></div>
+      <div class="ggrid" id="gg"></div>
+    </section>
+    <section id="about">
+      <div class="sh">
+        <h2>About Cafe Bengaluru</h2>
+        <p>
+          Cafe Bengaluru is a great place to enjoy quality food and drinks.
+          We are committed to providing the best experience for our customers.
+          Come visit us at 20,26,27, Bombay Shopping Centre, M Corp +OG, 19, RC Dutt Rd, Alkapuri, Vadodara, Gujarat 390007.
+        </p>
+      </div>
+    </section>
+    <section id="contact">
+      <div class="sh"><h2>Visit Us</h2></div>
+      <div class="cgrid">
+        <div class="ccard">
+          <h5>Phone</h5>
+          <div class="cv"><a href="tel:06351272293">06351272293</a></div>
+        </div>
+        <div class="ccard">
+          <h5>Address</h5>
+          <div class="cv">20,26,27, Bombay Shopping Centre, M Corp +OG, 19, RC Dutt Rd, Alkapuri, Vadodara, Gujarat 390007</div>
+        </div>
+        <div class="ccard">
+          <h5>Hours</h5>
+          <div class="cv">4:00 AM - 4:15PM</div>
+        </div>
+        <div class="ccard">
+          <h5>Instagram</h5>
+          <div class="cv">
+            <a href="https://instagram.com/" target="_blank">@</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p>2026 Cafe Bengaluru</p>
+      <button class="btn-al" onclick="OA()">Admin Panel</button>
+    </footer>
+    <button class="fab" onclick="TC()">Cart <b id="fb">(0)</b></button>
+    <div class="ovr" id="co">
+      <div class="cdrawer">
+        <div class="chd">
+          <h3>Your Cart</h3>
+          <button onclick="TC()">X</button>
+        </div>
+        <div class="cbody" id="ci">
+          <div class="cempty">Cart is empty.</div>
+        </div>
+        <div class="cfoot" id="cf" style="display: none">
+          <div class="ctr">
+            <span class="tl">Total</span><span class="tv" id="ctv">0</span>
+          </div>
+          <button class="btn-co" onclick="OC()">Checkout</button
+          ><button class="btn-cl" onclick="CLR()">Clear</button>
+        </div>
+      </div>
+    </div>
+    <div class="ovr" id="chko"></div>
+    <div class="ovr" id="ao"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
